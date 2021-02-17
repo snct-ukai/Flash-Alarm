@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:minWidth="25px"
+    android:minHeight="25px"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/linearLayout1"
+    android:gravity="center">
+    <TextView
+        android:text="時刻"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/time"
+        android:gravity="center"/>
+    <Button
+        android:text="時間設定"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/timebutton"
+        android:gravity="center" />
+    <TextView
+        android:text="ファイル名"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/filename"
+        android:gravity="center"
+        android:layout_marginTop="48.5dp" />
+    <Button
+        android:text="音源設定"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/filebutton"
+        android:gravity="center" />
+    <Button
+        android:text="OFF"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/alarmswitch"
+        android:layout_marginTop="48.5dp" />
+
+</LinearLayout>

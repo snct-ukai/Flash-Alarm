@@ -1,0 +1,35 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="top">
+    <LinearLayout
+        android:orientation="vertical"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="418.5dp"
+        android:gravity="center">
+        <TextView
+            android:gravity="center"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/numberdisplay"
+            android:layout_marginTop="30.5dp" />
+
+        <EditText
+            android:gravity="center"
+            android:inputType="number"
+            android:layout_width="118.0dp"
+            android:layout_height="40.5dp"
+            android:id="@+id/number"
+            android:layout_marginTop="46.5dp" />
+        <Button
+            android:text="スタート"
+            android:layout_width="220.0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/activity_button"
+            android:layout_marginTop="49.5dp"/>
+    </LinearLayout>
+</LinearLayout>

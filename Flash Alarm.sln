@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30907.101
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Flash Alarm", "Flash Alarm\Flash Alarm.csproj", "{18FDC2F8-F5AB-47F0-A30C-D8D417640F70}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{18FDC2F8-F5AB-47F0-A30C-D8D417640F70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18FDC2F8-F5AB-47F0-A30C-D8D417640F70}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18FDC2F8-F5AB-47F0-A30C-D8D417640F70}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{18FDC2F8-F5AB-47F0-A30C-D8D417640F70}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18FDC2F8-F5AB-47F0-A30C-D8D417640F70}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18FDC2F8-F5AB-47F0-A30C-D8D417640F70}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2922CBCF-1AC7-42B5-92CE-293AAB03BC5A}
+	EndGlobalSection
+EndGlobal
