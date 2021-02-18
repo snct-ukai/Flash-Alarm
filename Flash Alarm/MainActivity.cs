@@ -23,6 +23,7 @@ namespace Flash_Alarm
         public DateTime alarmtime;
         public bool aswitch = false;
         public bool timeswitch = false;
+        public bool fileswitch = false;
 
         public async void timer()
         {
@@ -66,13 +67,23 @@ namespace Flash_Alarm
             timer();
         }
 
-        private void AlarmSwitch_Click(object sender, EventArgs e)
+        private void AlarmSwitch()
         {
-            if (timeswitch)
+            if (timeswitch && fileswitch)
             {
                 aswitch = !aswitch;
                 Alarm.Text = aswitch ? "ON" : "OFF";
             }
+            else
+            {
+                aswitch = false;
+                Alarm.Text = "OFF";
+            }
+        }
+
+        private void AlarmSwitch_Click(object sender, EventArgs e)
+        {
+            AlarmSwitch();
         }
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
@@ -119,10 +130,17 @@ namespace Flash_Alarm
             {
                 filepath = file.FilePath;
                 filename.Text = file.FileName;
+                fileswitch = true;
+                if (!aswitch)
+                {
+                    AlarmSwitch();
+                }
             }
             else
             {
                 filename.Text = "mp3ファイルを選択してください";
+                fileswitch = false;
+                AlarmSwitch();
             }
         }
 
@@ -136,6 +154,10 @@ namespace Flash_Alarm
                 timeswitch = true;
             });
             frag.Show(FragmentManager, TimePickerFragment.TAG);
+            if (!aswitch)
+            {
+                AlarmSwitch();
+            }
         }
     }
 }
