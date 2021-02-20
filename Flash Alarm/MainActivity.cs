@@ -10,12 +10,15 @@ using Android.Util;
 using Android.Text.Format;
 using System.Threading.Tasks;
 using Android.Content;
+using Android.Media;
 
 namespace Flash_Alarm
 {
     [Activity(Label = "@string/app_name", Theme = "@style/AppTheme", MainLauncher = true)]
     public class MainActivity : AppCompatActivity
     {
+        protected MediaPlayer player;
+
         public TextView filename { get; private set; }
         public TextView timeDisplay { get; private set; }
         public TextView Alarm { get; private set; }
@@ -44,6 +47,23 @@ namespace Flash_Alarm
             }
         }
 
+        private void AlarmSwitch()
+        {
+            Button AlarmSwitch = FindViewById<Button>(Resource.Id.@alarmswitch);
+            if (timeswitch && fileswitch)
+            {
+                AlarmSwitch.Enabled = true;
+                aswitch = !aswitch;
+                Alarm.Text = aswitch ? "ON" : "OFF";
+            }
+            else
+            {
+                AlarmSwitch.Enabled = false;
+                aswitch = false;
+                Alarm.Text = "OFF";
+            }
+        }
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -61,24 +81,11 @@ namespace Flash_Alarm
             Button FileSet = FindViewById<Button>(Resource.Id.filebutton);
             FileSet.Click += FileSet_Click;
 
-            Button AlarmSwitch = FindViewById<Button>(Resource.Id.@alarmswitch);
-            AlarmSwitch.Click += AlarmSwitch_Click;
+            Button Alarmswitch = FindViewById<Button>(Resource.Id.@alarmswitch);
+            Alarmswitch.Click += AlarmSwitch_Click;
 
             timer();
-        }
-
-        private void AlarmSwitch()
-        {
-            if (timeswitch && fileswitch)
-            {
-                aswitch = !aswitch;
-                Alarm.Text = aswitch ? "ON" : "OFF";
-            }
-            else
-            {
-                aswitch = false;
-                Alarm.Text = "OFF";
-            }
+            AlarmSwitch();
         }
 
         private void AlarmSwitch_Click(object sender, EventArgs e)
@@ -125,8 +132,25 @@ namespace Flash_Alarm
 
         private async void FileSet_Click(object sender, EventArgs e)
         {
+            bool x;
             var file = await CrossFilePicker.Current.PickFile();
-            if (Path.GetExtension(file.FilePath) == ".mp3")
+            try
+            {
+                player = new MediaPlayer();
+                player.SetDataSource(file.FilePath);
+                player.Prepare();
+                player.Start();
+                x = true;
+            }
+            catch (Exception)
+            {
+                x = false;
+                filename.Text = "このファイルは再生できません";
+                fileswitch = false;
+                AlarmSwitch();
+            }
+            player.Reset();
+            if (x)
             {
                 filepath = file.FilePath;
                 filename.Text = file.FileName;
@@ -135,12 +159,6 @@ namespace Flash_Alarm
                 {
                     AlarmSwitch();
                 }
-            }
-            else
-            {
-                filename.Text = "mp3ファイルを選択してください";
-                fileswitch = false;
-                AlarmSwitch();
             }
         }
 

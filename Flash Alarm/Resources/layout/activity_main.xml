@@ -9,7 +9,6 @@
     android:id="@+id/linearLayout1"
     android:gravity="center">
     <TextView
-        android:text="時刻"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -22,7 +21,6 @@
         android:id="@+id/timebutton"
         android:gravity="center" />
     <TextView
-        android:text="ファイル名"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
