@@ -26,6 +26,7 @@ namespace Flash_Alarm
             {
                 player = new MediaPlayer();
                 player.SetDataSource(filePath);
+                player.Looping = true;
                 player.Prepare();
                 player.Start();
             }

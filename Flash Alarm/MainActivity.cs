@@ -4,7 +4,6 @@ using Android.Support.V7.App;
 using Android.Runtime;
 using Android.Widget;
 using Plugin.FilePicker;
-using System.IO;
 using System;
 using Android.Util;
 using Android.Text.Format;
@@ -24,16 +23,16 @@ namespace Flash_Alarm
         public TextView Alarm { get; private set; }
         public string filepath;
         public DateTime alarmtime;
-        public bool aswitch = false;
         public bool timeswitch = false;
         public bool fileswitch = false;
 
         public async void timer()
         {
+            Switch AlarmSwitch = FindViewById<Switch>(Resource.Id.@alarmswitch);
             bool a = true;
             while (a)
             {
-                if (aswitch)
+                if (AlarmSwitch.Checked)
                 {
                     if (alarmtime.ToShortTimeString() == DateTime.Now.ToShortTimeString())
                     {
@@ -49,18 +48,14 @@ namespace Flash_Alarm
 
         private void AlarmSwitch()
         {
-            Button AlarmSwitch = FindViewById<Button>(Resource.Id.@alarmswitch);
+            Switch AlarmSwitch = FindViewById<Switch>(Resource.Id.@alarmswitch);
             if (timeswitch && fileswitch)
             {
                 AlarmSwitch.Enabled = true;
-                aswitch = !aswitch;
-                Alarm.Text = aswitch ? "ON" : "OFF";
             }
             else
             {
                 AlarmSwitch.Enabled = false;
-                aswitch = false;
-                Alarm.Text = "OFF";
             }
         }
 
@@ -81,7 +76,7 @@ namespace Flash_Alarm
             Button FileSet = FindViewById<Button>(Resource.Id.filebutton);
             FileSet.Click += FileSet_Click;
 
-            Button Alarmswitch = FindViewById<Button>(Resource.Id.@alarmswitch);
+            Switch Alarmswitch = FindViewById<Switch>(Resource.Id.@alarmswitch);
             Alarmswitch.Click += AlarmSwitch_Click;
 
             timer();
@@ -155,11 +150,8 @@ namespace Flash_Alarm
                 filepath = file.FilePath;
                 filename.Text = file.FileName;
                 fileswitch = true;
-                if (!aswitch)
-                {
-                    AlarmSwitch();
-                }
             }
+            AlarmSwitch();
         }
 
         private void TimeSet_Click(object sender, EventArgs e)
@@ -172,10 +164,7 @@ namespace Flash_Alarm
                 timeswitch = true;
             });
             frag.Show(FragmentManager, TimePickerFragment.TAG);
-            if (!aswitch)
-            {
-                AlarmSwitch();
-            }
+            AlarmSwitch();
         }
     }
 }

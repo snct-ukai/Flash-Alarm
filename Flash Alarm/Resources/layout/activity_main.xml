@@ -33,11 +33,11 @@
         android:layout_height="wrap_content"
         android:id="@+id/filebutton"
         android:gravity="center" />
-    <Button
-        android:text="OFF"
-        android:layout_width="130dp"
+    <Switch
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/alarmswitch"
-        android:layout_marginTop="48.5dp" />
-
+        android:gravity="left"
+        android:layout_marginTop="48.5dp"
+        android:layout_gravity="center" />
 </LinearLayout>
